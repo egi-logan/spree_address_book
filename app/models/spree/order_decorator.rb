@@ -74,7 +74,7 @@ Spree::Order.class_eval do
   def update_or_create_address(attributes = {})
     return if attributes.blank?
     #attributes = attributes.select{|k,v| v.present?}.permit(permitted_address_attributes)
-    #fix for 3.2.0-rc3  Previous line errors, at least with mysql2 adapter
+    #fix for 3.2.0-rc3  Previous line errors, at least with mysql2 adapter Thanks to tamagokun
  attributes = ActionController::Parameters.new(attributes.select{|k,v| v.present?}).permit(permitted_address_attributes)
    
     if self.user
